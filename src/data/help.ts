@@ -141,10 +141,35 @@ export const help: Record<string, HelpEntry> = {
      CALIBRATION
   ========================= */
   A: {
-    title: "A (Calibration constant)",
+    title: "COCOMO II Calibration Constant (A)",
     description:
-      "Calibration constant in PM = A * (KSLOC^E) * EAF. Use defaults unless you have historical calibration.",
-    notes: ["COCOMO II.2000 baseline uses A ≈ 2.94."],
+      "Calibration constant used in the core COCOMO II effort equation.",
+    notes: [
+      "Effort formula:",
+      "PM = A × (KSLOC ^ E) × EAF",
+
+      "",
+      "Range interpretation:",
+
+      "Below 2.5 — High Productivity",
+      "Indicates an extremely efficient environment with advanced tools, high automation, or a very experienced team. Estimates will be significantly lower than the industry average.",
+
+      "",
+      "2.5 – 2.8 — Above Average",
+      "Represents a streamlined development process. The organization likely has better-than-average reuse or lower overhead than the standard COCOMO database.",
+
+      "",
+      "2.94 — Standard Baseline",
+      "Nominal value calibrated from the original 161 projects in the COCOMO II database. Represents typical industry performance.",
+
+      "",
+      "3.0 – 3.3 — Below Average",
+      "Suggests higher overhead, possibly due to legacy systems, complex integration, or less mature processes.",
+
+      "",
+      "Above 3.3 — Low Productivity",
+      "Often seen in highly regulated environments such as aerospace or medical software where documentation and verification overhead are significant."
+    ]
   },
   B: {
     title: "B (Exponent base)",
@@ -433,3 +458,31 @@ export const help: Record<string, HelpEntry> = {
     ],
   },
 };
+/*
+=====================================
+CALCULATED FIELD FORMULAS
+=====================================
+
+Adaptation Adjustment Factor (AAF)
+
+AAF = (0.4 * DM) + (0.3 * CM) + (0.3 * IM)
+
+Where:
+DM = Percent of Design Modified
+CM = Percent of Code Modified
+IM = Percent of Integration Modified
+
+
+Equivalent Source Lines of Code (ESLOC)
+
+ESLOC = KSLOC * [AA + AAF * (1 + (0.02 * SU * UNFM))] / 100
+
+Where:
+KSLOC = ASLOC / 1000
+AA    = Assessment & Assimilation
+SU    = Software Understanding
+UNFM  = Unfamiliarity
+
+This formula estimates the effective development size after reuse
+and modification effort are considered.
+*/

@@ -10,10 +10,12 @@ import { exportEstimatorToExcel } from "./exportExcel";
 // ===== V3 ADDITIONS END: Excel export =====
 
 type Step = 0 | 1 | 2 | 3 | 4 | 5;
-
+// V3 ADDITION — number formatting helper
+const f3 = (n:number | undefined | null) =>
+  n === undefined || n === null ? "" : Number(n).toFixed(3);
 function fmtNum(x: number) {
   if (!Number.isFinite(x)) return "0";
-  return x.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  return x.toLocaleString(undefined, { maximumFractionDigits: 3 });
 }
 
 function Pill({ impact }: { impact: string }) {
@@ -437,7 +439,7 @@ export default function App() {
               </div>
               <div>
                 <div style={{ fontSize: 12, color: "var(--wm-muted)", fontWeight: 800 }}>Exponent E</div>
-                <div style={{ fontSize: 20, fontWeight: 900, color: "var(--wm-navy)" }}>{fmtNum(round1(r.exponentE))}</div>
+                <div style={{ fontSize: 20, fontWeight: 900, color: "var(--wm-navy)" }}>{fmtNum(r.exponentE)}</div>
               </div>
             </div>
           </Section>
@@ -484,7 +486,7 @@ export default function App() {
                   </FormGrid>
 
                   <hr className="hr" />
-                  <div style={{ fontWeight: 900, color: "var(--wm-navy)" }}>ΠEM: {fmtNum(round1(r.emProd))}</div>
+                  <div style={{ fontWeight: 900, color: "var(--wm-navy)" }}>ΠEM: {fmtNum(r.emProd)}</div>
                 </>
               );
             })()}
