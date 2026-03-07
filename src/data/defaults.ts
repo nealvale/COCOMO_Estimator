@@ -1,0 +1,61 @@
+import { CocomoInputs } from "../model/cocomo";
+
+export const defaults: CocomoInputs = {
+  assumptions: {
+    totalLoc: 800_000,
+    avgTotalFTE: 94,
+    fteRateLow: 90,
+    fteRateHigh: 140,
+    scheduleMonths: 18,
+    rdAllocation: 0.16,
+    hoursPerMonth: 160,
+    contractorRateLow: 50,
+    contractorRateHigh: 75,
+  },
+  esloc: {
+    asloc: 800_000,
+    dm: 20,
+    cm: 45,
+    im: 10,
+    aa: 5,
+    su: 10,
+    unfm: 0.3,
+  },
+  scaleFactors: {
+    prec: 2,
+    flex: 1.5,
+    resl: 1.5,
+    team: 0.78,
+    pmat: 4.5,
+  },
+  effortMultipliers: {
+    rely: 1.2,
+    data: 1.15,
+    cplx: 1.17,
+    ruse: 1.0,
+    docu: 1.0,
+    time: 1.11,
+    stor: 1.0,
+    pvol: 1.05,
+    acap: 0.75,
+    pcap: 0.75,
+    pcon: 0.85,
+    tool: 0.8,
+    site: 1.0,
+    sced: 1.0,
+  },
+  calibration: {
+    a: 2.4,
+    bBase: 0.91,
+  },
+  resources: {
+    scheduleMonths: 18,
+    hoursPerPM: 160,
+    avgTotalFTE: 94,          // your sheet: 69 + 25
+    internalAllocation: 0.16,
+    fteRateLow: 90,
+    fteRateHigh: 140,
+    contractorRateLow: 50,
+    contractorRateHigh: 75,
+  },
+};
