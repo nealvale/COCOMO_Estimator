@@ -154,7 +154,7 @@ body{
   border-radius:var(--radius);
   box-shadow:var(--wm-shadow);
   padding:18px 18px 14px;
-  min-height:560px; /* button stability across steps */
+  min-height:420px; /* button stability across steps */
   display:flex;
   flex-direction:column;
 }
@@ -399,7 +399,7 @@ body{
 ===================================== */
 
 .footerNav{
-  margin-top:auto; /* keeps buttons pinned consistently within the card */
+  margin-top:16px;
   display:flex;
   justify-content:space-between;
   align-items:center;

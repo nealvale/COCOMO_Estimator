@@ -144,32 +144,49 @@ export const help: Record<string, HelpEntry> = {
     title: "COCOMO II Calibration Constant (A)",
     description:
       "Calibration constant used in the core COCOMO II effort equation.",
-    notes: [
-      "Effort formula:",
-      "PM = A × (KSLOC ^ E) × EAF",
-
-      "",
-      "Range interpretation:",
-
-      "Below 2.5 — High Productivity",
-      "Indicates an extremely efficient environment with advanced tools, high automation, or a very experienced team. Estimates will be significantly lower than the industry average.",
-
-      "",
-      "2.5 – 2.8 — Above Average",
-      "Represents a streamlined development process. The organization likely has better-than-average reuse or lower overhead than the standard COCOMO database.",
-
-      "",
-      "2.94 — Standard Baseline",
-      "Nominal value calibrated from the original 161 projects in the COCOMO II database. Represents typical industry performance.",
-
-      "",
-      "3.0 – 3.3 — Below Average",
-      "Suggests higher overhead, possibly due to legacy systems, complex integration, or less mature processes.",
-
-      "",
-      "Above 3.3 — Low Productivity",
-      "Often seen in highly regulated environments such as aerospace or medical software where documentation and verification overhead are significant."
-    ]
+    ratings: [
+      {
+        rating: "Below 2.5",
+        numeric: 2.30,
+        impact: "Good (reduces effort)",
+        meaning: "High Productivity",
+        example:
+          "Extremely efficient environment with advanced tools, high automation, or a very experienced team. Estimates will be significantly lower than industry average.",
+      },
+      {
+        rating: "2.5 – 2.8",
+        numeric: 2.65,
+        impact: "Good (reduces effort)",
+        meaning: "Above Average",
+        example:
+          "Streamlined development process. The organization likely has better-than-average reuse or lower overhead than the standard COCOMO database.",
+      },
+      {
+        rating: "2.94",
+        numeric: 2.94,
+        impact: "Neutral",
+        meaning: "Standard Baseline",
+        example:
+          "Nominal value calibrated from the original 161 projects in the COCOMO II database. Represents typical industry performance.",
+      },
+      {
+        rating: "3.0 – 3.3",
+        numeric: 3.15,
+        impact: "Bad (increases effort)",
+        meaning: "Below Average",
+        example:
+          "Higher overhead, possibly due to legacy systems, complex integration, or less mature processes.",
+      },
+      {
+        rating: "Above 3.3",
+        numeric: 3.50,
+        impact: "Bad (increases effort)",
+        meaning: "Low Productivity",
+        example:
+          "Often seen in highly regulated environments such as aerospace or medical software where documentation and verification overhead are significant.",
+      },
+    ],
+    notes: ["Effort formula:", "PM = A × (KSLOC ^ E) × EAF"],
   },
   B: {
     title: "B (Exponent base)",
@@ -313,7 +330,7 @@ export const help: Record<string, HelpEntry> = {
   },
   TIME: {
     title: "TIME — Execution Time Constraint",
-    description: "How tight CPU/execution-time constraints are.",
+    description: "How tight execution-time constraints are.",
     ratings: [
       { rating: "Very Low", numeric: null, impact: "Neutral", meaning: "Not used", example: "n/a" },
       { rating: "Low", numeric: null, impact: "Neutral", meaning: "Not used", example: "n/a" },
